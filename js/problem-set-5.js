@@ -26,7 +26,29 @@ function mario() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-  // WRITE YOUR EXERCISE 1 CODE HERE
+height = 0;
+while (height > 23 || height < 1) {
+  height = prompt("Please enter an integer from 1 to 23, else you'll be reprompted or it will be rounded down.");
+  Math.floor(height);
+}
+
+var p = document.getElementById("mario-easy-output");
+p.innerHTML = "";
+
+y = height;
+z = height;
+
+while (height >= 1) {
+  let x = height;
+  while (x >= 1) {
+    p.innerHTML += '#';
+    x--;
+  }
+  p.innerHTML += "<br/>";
+  height--;
+}
+
+
 
   ////////////////////////// DO NOT MODIFY
   check('mario', height); // DO NOT MODIFY
