@@ -45,7 +45,7 @@ while (height >= 2) {
   let x = y;
   z = w;
   while (z >= 1) {
-    p.innerHTML += ' ';
+    p.innerHTML += '. ';
     z--;
   }
 
@@ -98,6 +98,54 @@ function marioAgain() {
 
   // WRITE YOUR EXERCISE 2 CODE HERE
   // \u00A0 = Centers effect
+  height = -1;
+  while (height > 23 || height < 1 || height % 1 != 0) {
+    height = prompt("Please enter an integer from 1 to 23, else you'll be reprompted or it will be rounded down.");
+    Math.floor(height);
+  }
+
+  var p = document.getElementById("mario-hard-output");
+  p.innerHTML = '';
+
+  let y = 2;
+  height++;
+  let v = height;
+  let z = v - 2;
+  let w = v - 2;
+
+  while (height >= 2) {
+    let x = y;
+    z = w;
+
+    while (z >= 1) {
+      p.innerHTML += '. ';
+      z--;
+    }
+
+    while (x >= 1) {
+      p.innerHTML += '#';
+      x--;
+  }
+
+    p.innerHTML += "..."
+
+    x = y;
+
+    while (x >= 1) {
+      p.innerHTML += '#';
+      x--;
+    }
+
+
+    height--;
+    y++;
+    w--;
+    if (height > 1) {
+      p.innerHTML += '<br/>';
+    }
+
+  }
+
 
   //////////////////////////////// DO NOT MODIFY
   check('mario-again', height); // DO NOT MODIFY
