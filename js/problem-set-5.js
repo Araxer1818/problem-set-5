@@ -32,8 +32,11 @@ while (height > 23 || height < 1 || height % 1 != 0) {
   Math.floor(height);
 }
 
+let a = height;
+
 var p = document.getElementById("mario-easy-output");
 p.innerHTML = '';
+let str = "<code>";
 
 let y = 2;
 height++;
@@ -45,12 +48,12 @@ while (height >= 2) {
   let x = y;
   z = w;
   while (z >= 1) {
-    p.innerHTML += '. ';
+    str += '&nbsp;';
     z--;
   }
 
   while (x >= 1) {
-    p.innerHTML += '#';
+    str += '#';
     x--;
 }
 
@@ -58,10 +61,14 @@ while (height >= 2) {
   y++;
   w--;
   if (height > 1) {
-    p.innerHTML += '<br/>';
+    str += '<br/>';
   }
 
 }
+
+height = a;
+str += "</code>";
+p.innerHTML = str;
 
   ////////////////////////// DO NOT MODIFY
   check('mario', height); // DO NOT MODIFY
@@ -98,54 +105,62 @@ function marioAgain() {
 
   // WRITE YOUR EXERCISE 2 CODE HERE
   // \u00A0 = Centers effect
+
   height = -1;
   while (height > 23 || height < 1 || height % 1 != 0) {
     height = prompt("Please enter an integer from 1 to 23, else you'll be reprompted or it will be rounded down.");
+    // convert height to number
+    // make sure it is an integer
     Math.floor(height);
   }
 
+
+  let a = height;
+
   var p = document.getElementById("mario-hard-output");
   p.innerHTML = '';
+  let str = "<code>";
 
   let y = 2;
-  height++;
-  let v = height;
+  a++;
+  let v = a;
   let z = v - 2;
   let w = v - 2;
 
-  while (height >= 2) {
+  while (a >= 2) {
     let x = y;
     z = w;
-
     while (z >= 1) {
-      p.innerHTML += '. ';
+      str += '&nbsp;';
       z--;
     }
 
     while (x >= 1) {
-      p.innerHTML += '#';
+      str += '#';
       x--;
   }
 
-    p.innerHTML += "..."
+  str += '&nbsp;&nbsp;';
 
     x = y;
 
-    while (x >= 1) {
-      p.innerHTML += '#';
-      x--;
-    }
+  while (x >= 1) {
+    str += '#';
+    x--;
+}
 
-
-    height--;
+    a--;
     y++;
     w--;
-    if (height > 1) {
-      p.innerHTML += '<br/>';
+    if (a > 1) {
+      str += '<br/>';
     }
 
   }
-
+  str += "</code>";
+  p.innerHTML = str;
+  height = Number('height');
+  console.log(typeof height);
 
   //////////////////////////////// DO NOT MODIFY
   check('mario-again', height); // DO NOT MODIFY
