@@ -514,7 +514,7 @@ loop5:
 
   function sortNumbers(a,b) {
         return a - b;
-    };
+    }
 
 
   a.sort(sortNumbers);
@@ -595,6 +595,76 @@ function reportCard() {
   let quizzes = 0; //// DO NOT MODIFY
   let homeworks = 0; // DO NOT MODIFY
   ///////////////////// DO NOT MODIFY
+
+  function countDecimals(input) {
+    if (input % 1 != 0) {
+      countArray = input.split(".");
+      count = countArray[1].length;
+      return count;
+    } else {
+      return 0;
+    }
+  }
+
+var p = document.getElementById("report-card-output");
+str = "<code>"
+let homeworkGrade;
+let quizGrade;
+let testGrade;
+
+Homework:
+homeworkGrade = prompt("Enter as many homework grades as you like. Enter them one at a time or they'll not be computed. Only real numbered grades from 0 - 100 rounded to the nearest tenth will be accepted. Enter a -1 to proceed to Quiz grades.");
+
+  while (homeworkGrade != -1) {
+    if (homeworkGrade <= 100.0 && homeworkGrade >= 0 && countDecimals(homeworkGrade) < 2 && (homeworkGrade || homeworkGrade === 0)) {
+      homeworkGrade = Number(homeworkGrade);
+      homeworks++;
+      homeworkTotal = homeworkTotal + homeworkGrade;
+      homeworkGrade = prompt("Enter as many homework grades as you like. Enter them one at a time or they'll not be computed. Only real numbered grades from 0 - 100 rounded to the nearest tenth will be accepted. Enter a -1 to proceed to Quiz grades.");
+    } else {
+      homeworkGrade = prompt("Either you didn't follow the limitations or you entered a illegitimate grade. Enter another grade. Only real numbered grades from 0 - 100 rounded to the nearest tenth will be accepted. Enter a -1 to proceed to Quiz grades.");
+    }
+  }
+
+Quiz:
+quizGrade = prompt("Enter as many quiz grades as you like. Enter them one at a time or they'll not be computed. Only real numbered grades from 0 - 100 rounded to the nearest tenth will be accepted. Enter a -1 to proceed to Test grades.");
+
+while (quizGrade != -1) {
+  if (quizGrade <= 100.0 && quizGrade >= 0 && countDecimals(quizGrade) < 2 && (quizGrade || quizGrade === 0)) {
+    quizGrade = Number(quizGrade);
+    quizzes++;
+    quizTotal = quizTotal + quizGrade;
+    quizGrade = prompt("Enter as many quiz grades as you like. Enter them one at a time or they'll not be computed. Only real numbered grades from 0 - 100 rounded to the nearest tenth will be accepted. Enter a -1 to proceed to test grades.");
+  } else {
+    quizGrade = prompt("Either you didn't follow the limitations or you entered a illegitimate grade. Enter another grade. Only real numbered grades from 0 - 100 rounded to the nearest tenth will be accepted. Enter a -1 to proceed to test grades.");
+  }
+}
+
+Test:
+testGrade = prompt("Enter as many test grades as you like. Enter them one at a time or they'll not be computed. Only real numbered grades from 0 - 100 rounded to the nearest tenth will be accepted. Enter a -1 to calculate total average grade.");
+
+while (testGrade != -1) {
+  if (testGrade <= 100.0 && testGrade >= 0 && countDecimals(testGrade) < 2 && (testGrade || testGrade === 0)) {
+    testGrade = Number(testGrade);
+    tests++;
+    testTotal = testTotal + testGrade;
+    testGrade = prompt("Enter as many test grades as you like. Enter them one at a time or they'll not be computed. Only real numbered grades from 0 - 100 rounded to the nearest tenth will be accepted. Enter a -1 to calculate total average grade.");
+  } else {
+    testGrade = prompt("Either you didn't follow the limitations or you entered a illegitimate grade. Enter another grade. Only real numbered grades from 0 - 100 rounded to the nearest tenth will be accepted. Enter a -1 to calculate total average grade.");
+  }
+}
+
+let testAvg = ((testTotal / tests)).toFixed(2);
+let testFinal = testAvg * 6;
+let quizAvg = ((quizTotal / quizzes)).toFixed(2);
+let quizFinal = quizAvg * 3;
+let homeworkAvg = ((homeworkTotal / homeworks)).toFixed(2);
+let homeworkFinal = homeworkAvg * 1;
+let total = ((testFinal + quizFinal + homeworkFinal)).toFixed(2);
+let grade = (total / 10).toFixed(2);
+
+str += "Tests: " + testAvg + "<br/>" + "Quizzes: " + quizAvg + "<br/>" + "Homework: " + homeworkAvg + "<br/>" + "Grade: " + grade;
+p.innerHTML = str;
 
   /*
    * NOTE: The 'tests', 'quizzes', and 'homeworks' variables should be
