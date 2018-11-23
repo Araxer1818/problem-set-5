@@ -26,11 +26,11 @@ function mario() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-height = -1;
-while (height > 23 || height < 1 || height % 1 != 0) {
-  height = prompt("Please enter an integer from 1 to 23, else you'll be reprompted or it will be rounded down.");
-  Math.floor(height);
-}
+
+  while (height > 23 || height < 1 || height % 1 != 0) {
+    height = prompt("Please enter an integer from 1 to 23, else you'll be reprompted.");
+    height = Number(height);
+  }
 
 let a = height;
 
@@ -38,15 +38,16 @@ var p = document.getElementById("mario-easy-output");
 p.innerHTML = '';
 let str = "<code>";
 
+a++;
 let y = 2;
-height++;
-let v = height;
+let v = a;
 let z = v - 2;
 let w = v - 2;
 
-while (height >= 2) {
+while (a >= 2) {
   let x = y;
   z = w;
+
   while (z >= 1) {
     str += '&nbsp;';
     z--;
@@ -55,20 +56,20 @@ while (height >= 2) {
   while (x >= 1) {
     str += '#';
     x--;
-}
+  }
 
-  height--;
+  a--;
   y++;
   w--;
-  if (height > 1) {
+  if (a > 1) {
     str += '<br/>';
   }
 
 }
 
-height = a;
 str += "</code>";
 p.innerHTML = str;
+console.log(typeof height);
 
   ////////////////////////// DO NOT MODIFY
   check('mario', height); // DO NOT MODIFY
@@ -106,12 +107,11 @@ function marioAgain() {
   // WRITE YOUR EXERCISE 2 CODE HERE
   // \u00A0 = Centers effect
 
-  height = -1;
   while (height > 23 || height < 1 || height % 1 != 0) {
-    height = prompt("Please enter an integer from 1 to 23, else you'll be reprompted or it will be rounded down.");
+    height = prompt("Please enter an integer from 1 to 23, else you'll be reprompted.");
     // convert height to number
     // make sure it is an integer
-    Math.floor(height);
+    height = Number(height);
   }
 
 
@@ -121,45 +121,46 @@ function marioAgain() {
   p.innerHTML = '';
   let str = "<code>";
 
-  let y = 2;
   a++;
+  let y = 2;
   let v = a;
   let z = v - 2;
   let w = v - 2;
 
-  while (a >= 2) {
-    let x = y;
-    z = w;
-    while (z >= 1) {
-      str += '&nbsp;';
-      z--;
-    }
+while (a >= 2) {
+  let x = y;
+  z = w;
 
-    while (x >= 1) {
-      str += '#';
-      x--;
+  while (z >= 1) {
+    str += '&nbsp;';
+    z--;
+  }
+
+  while (x >= 1) {
+    str += '#';
+    x--;
   }
 
   str += '&nbsp;&nbsp;';
 
-    x = y;
+  x = y;
 
   while (x >= 1) {
     str += '#';
     x--;
 }
 
-    a--;
-    y++;
-    w--;
-    if (a > 1) {
-      str += '<br/>';
-    }
-
+  a--;
+  y++;
+  w--;
+  if (a > 1) {
+    str += "<br/>";
   }
+
+}
+
   str += "</code>";
   p.innerHTML = str;
-  height = Number('height');
   console.log(typeof height);
 
   //////////////////////////////// DO NOT MODIFY
@@ -188,7 +189,8 @@ function marioAgain() {
  *
  * American Express uses 15-digit numbers, starting with 34 or 37.
  * Mastercard uses uses 16-digit numbers, starting with 51, 52, 53, 54,
- * or 55. Visa uses 13- or 16-digit numbers, starting with 4.
+ * or 55.
+ * Visa uses 13- or 16-digit numbers, starting with 4.
  *
  * 378282246310005 should verify as American Express.
  * 371449635398431 should verify as American Express.
@@ -213,7 +215,79 @@ function credit() {
   let card; // DO NOT MODIFY
   //////////// DO NOT MODIFY
 
-  // WRITE YOUR EXERCISE 3 CODE HERE
+while (card % 1 != 0 || card.length >= 17 || card.length < 13 || card.length == 14) {
+  card = prompt("Enter a Credit Card Number.");
+}
+
+let str = "<code>";
+var p = document.getElementById("credit-output");
+p.innerHTML = '';
+let a = card;
+let b = [];
+
+let i = 10;
+let q = 10;
+while (i < a*10) {
+  let x = a % q;
+  q = q / 10;
+  x = x / q;
+  b.push(Math.floor(x));
+  q = q * 100;
+  i = i * 10;
+}
+
+let d = b.filter((element, index) => {
+  return index % 2 === 0;
+})
+
+let c = b.filter((element, index) => {
+  return index % 2 !== 0;
+})
+
+let e = 0;
+let f = 0;
+
+for (i = 0; i < c.length; i++) {
+  e += (c [i]) * 2;
+}
+
+for (i = 0; i < d.length; i++) {
+  f += d[i];
+}
+
+let g = e + f;
+
+var id1 = b[b.length - 1];
+var id2 = b[b.length - 2];
+
+// 4511111111111 isn't this credit card number correct?
+// Images don't work?
+var imgv = new Image();
+var imgm = new Image();
+var imga = new Image();
+var imgi = new Image();
+imgv.src = 'images/visa.png';
+imgm.src = 'images/mastercard.png';
+imga.src = 'images/amex.png';
+imgi.src = 'images/invalid.png';
+
+if (g % 10 == 0) {
+  if (id1 == 4 && id1 % 1 == 0 && id2 % 1 == 0 && (a.length == 16 || a.length == 13)) {
+    str += "Visa." + "<br/>" + imgv;
+  } else if (id1 == 5 && id2 >= 1 && id2 <= 5 && id1 % 1 == 0 && id2 % 1 == 0 && a.length == 16) {
+    str += "Master Card." + "<br/>" + imgm;
+  } else if (id1 == 3 && id1 % 1 == 0 && id2 % 1 == 0 && (id2 == 4 || id2 == 7) && a.length == 15) {
+    str += "American Express." + "<br/>" + imga;
+  } else {
+    str += "Invalid." + "<br/>" + imgi;
+  }
+} else {
+  str += "Invalid." + "<br/>" + imgi;
+}
+
+card = Number(card);
+str += "</code>";
+p.innerHTML = str;
 
   /*
    * NOTE: After reading in the card number and storing it in the 'card'
@@ -252,7 +326,47 @@ function credit() {
 
 function guess() {
 
-  // WRITE YOUR EXERCISE 4 CODE HERE
+var p = document.getElementById("guess-output");
+let str = "<code>";
+let a = 1;
+let b = 0;
+
+let target = Math.floor(Math.random() * (1000 - 1) + 1);
+let guess = prompt("Try and guess the number from 1 to 1000. Only Integers are Accepted.");
+let counter = 0;
+if (guess > 1000 || guess < 1 || guess % 1 != 0) {
+  guess = prompt("Guess the number from 1 to 1000. Integers ONLY.");
+    while (guess > 1000 || guess < 1 || guess % 1 != 0) {
+      guess = prompt("Guess the number from 1 to 1000. I SAID INTEGERS ONLY.");
+    }
+}
+
+  while (guess != target) {
+    if (guess > target && guess <= 1000 && guess >= 1 && guess % 1 == 0) {
+      counter++;
+      b = guess;
+      guess = prompt('Try and guess the number from 1 to 1000. Likewise only integers are accepted. You should try and guess lower. Your most recent accepted guess was ' + b + '.');
+      a = 1;
+    } else if (guess < target && guess <= 1000 && guess >= 1 && guess % 1 == 0) {
+      counter++;
+      b = guess;
+      guess = prompt('Try and guess the number from 1 to 1000. Likewise only integers are accepted. You should try and guess higher. Your most recent accepted guess was ' + b + '.');
+      a = 2;
+    } else if (a == 1 && (guess > 1000 || guess < 1 || guess % 1 != 0)) {
+      guess = prompt('Try and guess the number from 1 to 1000. Again only Integers. You should try and guess lower. Your most recent accepted guess was ' + b + '.');
+    } else if (a == 2 && (guess > 1000 || guess < 1 || guess % 1 != 0)) {
+      guess = prompt('Try and guess the number from 1 to 1000. Again only Integers. You should try and guess higher. Your most recent accepted guess was ' + b + '.');
+    }
+  }
+
+counter++;
+str += "Congratulations, you have guess the target number in " + counter + " chances. As guessed, the target number was " + target + ".";
+str += "</code>";
+
+p.innerHTML = str;
+console.log(a);
+
+
 
   ////////////////// DO NOT MODIFY
   check('guess'); // DO NOT MODIFY
@@ -289,6 +403,39 @@ function hurricane() {
   let windspeed; // DO NOT MODIFY
   ///////////////// DO NOT MODIFY
 
+windspeed = 0;
+var p = document.getElementById("hurricane-output");
+str = "<code>";
+
+while (windspeed < 0 || windspeed % 1 != 0 || windspeed == false) {
+    windspeed = prompt("Please enter a Windspeed. Only Non-Negative Integers are Accepted.");
+    if (windspeed == true || windspeed === 0) {
+      break;
+    }
+}
+
+
+if (windspeed >= 157) {
+  str += "Catagory 5 Hurricane.";
+} else if (windspeed <= 156 && windspeed >= 130) {
+  str += "Catagory 4 Hurricane.";
+} else if (windspeed <= 129 && windspeed >= 111) {
+  str += "Catagory 3 Hurricane.";
+} else if (windspeed <= 110 && windspeed >= 96) {
+  str += "Catagory 2 Hurricane.";
+} else if (windspeed <= 95 && windspeed >= 74) {
+  str += "Catagory 1 Hurricane.";
+} else if (windspeed <= 73 && windspeed >= 39) {
+  str += "Tropical Storm.";
+} else {
+  str += "The skies are calm...";
+}
+
+windspeed = Number(windspeed);
+str += "</code>";
+p.innerHTML = str;
+
+
   ///////////////////////////////// DO NOT MODIFY
   check('hurricane', windspeed); // DO NOT MODIFY
   ///////////////////////////////// DO NOT MODIFY
@@ -318,6 +465,77 @@ function gymnastics() {
   let total = 0; //// DO NOT MODIFY
   let scores = []; // DO NOT MODIFY
   /////////////////// DO NOT MODIFY
+
+  let countArray = [];
+  let count;
+  function countDecimals(input) {
+    if (input % 1 != 0) {
+      countArray = input.split(".");
+      count = countArray[1].length;
+      return count;
+    } else {
+      return 0;
+    }
+  };
+
+  let score;
+  let i = 1;
+  var p = document.getElementById("gymnastics-output");
+  str = "<code>";
+  score = prompt("Please enter score number " + i + " out of 6. Only Real numbers between 0 and 10 rounded to the nearest tenth are accepted.");
+
+loop1:
+  while (scores.length < 6) {
+loop2:
+    if (score || score === '0') {
+loop3:
+      if (score <= 10.0 && score >= 0.0) {
+loop4:
+        if (countDecimals(score) >= 2) {
+          break loop3;
+          }
+      score = Number(score);
+      scores.push(score);
+      i++;
+loop5:
+      if (i == 7) {
+        break;
+      }
+    }
+      score = prompt("Please enter score number " + i + " out of 6. Only Real numbers between 0 and 10 rounded to the nearest tenth are accepted.");
+    } else {
+      score = prompt("Please enter score number " + i + " out of 6. Again only Real numbers between 0 and 10 rounded to the nearest tenth are accepted.");
+    }
+  }
+
+  let c = 0;
+  i = 0;
+  let a = scores.slice(0);
+
+  function sortNumbers(a,b) {
+        return a - b;
+    };
+
+
+  a.sort(sortNumbers);
+  let e = a[0];
+  let f = a[5];
+  a.shift();
+  a.pop();
+
+  while (i < a.length) {
+    c = a[i] + c;
+    i++;
+  }
+
+  total = (c / 4).toFixed(2);
+  if (e > f) {
+    str += 'Discarded: ' + f + ", " + e + "<br/>" + "Score: " + total;
+  } else {
+    str += 'Discarded: ' + e + ", " + f + "<br/>" + "Score: " + total;
+  }
+  str += "</code>";
+  p.innerHTML = str;
 
   /*
    * NOTE: The 'total' variable should be representative of the sum of all
