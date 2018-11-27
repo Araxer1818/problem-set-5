@@ -214,7 +214,7 @@ while (card % 1 != 0 || card.length >= 17 || card.length < 13 || card.length == 
   card = prompt("Enter a Credit Card Number.");
 }
 
-let str = "<code>";
+let str = "";
 var p = document.getElementById("credit-output");
 p.innerHTML = '';
 let a = card;
@@ -299,32 +299,47 @@ let g = m + v;
 var id1 = b[b.length - 1];
 var id2 = b[b.length - 2];
 
-var imgv = new Image();
-var imgm = new Image();
-var imga = new Image();
-var imgi = new Image();
-imgv.src = 'images/visa.png';
-imgm.src = 'images/mastercard.png';
-imga.src = 'images/amex.png';
-imgi.src = 'images/invalid.png';
+var imgv = document.createElement("img");
+var imgm = document.createElement("img");
+var imga = document.createElement("img");
+var img = document.createElement("img");
+imgv.src = "./images/visa.png";
+imgm.src = "./images/mastercard.png";
+imga.src = "./images/amex.png";
+img.src = "./images/invalid.png";
 
 if (g % 10 == 0) {
   if (id1 == 4 && id1 % 1 == 0 && id2 % 1 == 0 && (a.length == 16 || a.length == 13)) {
-    str += "Visa." + "<br/>" + imgv;
+    str += "Visa." + "<br/>";
+    k = 1;
   } else if (id1 == 5 && id2 >= 1 && id2 <= 5 && id1 % 1 == 0 && id2 % 1 == 0 && a.length == 16) {
-    str += "Master Card." + "<br/>" + imgm;
+    str += "Master Card." + "<br/>";
+    k = 2;
   } else if (id1 == 3 && id1 % 1 == 0 && id2 % 1 == 0 && (id2 == 4 || id2 == 7) && a.length == 15) {
-    str += "American Express." + "<br/>" + imga;
+    str += "American Express." + "<br/>";
+    k = 3;
   } else {
-    str += "Invalid." + "<br/>" + imgi;
+    str += "Invalid." + "<br/>";
+    k = 4;
   }
 } else {
-  str += "Invalid." + "<br/>" + imgi;
+  str += "Invalid." + "<br/>";
+  k = 4;
 }
 
 card = Number(card);
-str += "</code>"
 p.innerHTML = str;
+
+if (k == 1) {
+  p.appendChild(imgv);
+} else if (k == 2) {
+  p.appendChild(imgm);
+} else if (k == 3) {
+  p.appendChild(imga);
+} else if (k == 4) {
+  p.appendChild(img);
+}
+// 4111111111111111
 
   /*
    * NOTE: After reading in the card number and storing it in the 'card'
