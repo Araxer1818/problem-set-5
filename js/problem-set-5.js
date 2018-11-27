@@ -214,7 +214,7 @@ while (card % 1 != 0 || card.length >= 17 || card.length < 13 || card.length == 
   card = prompt("Enter a Credit Card Number.");
 }
 
-let str = "";
+let str = "<code>";
 var p = document.getElementById("credit-output");
 p.innerHTML = '';
 let a = card;
@@ -323,6 +323,7 @@ if (g % 10 == 0) {
 }
 
 card = Number(card);
+str += "</code>"
 p.innerHTML = str;
 
   /*
