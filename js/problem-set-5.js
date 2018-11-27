@@ -284,13 +284,13 @@ let v = 0;
 let m = 0;
 q = 0;
 while (q < f.length) {
-  v += f[q] + v;
+  v = f[q] + v;
   q++;
 }
 
 q = 0;
 while (q < h.length) {
-  m += h[q] + m;
+  m = h[q] + m;
   q++;
 }
 
