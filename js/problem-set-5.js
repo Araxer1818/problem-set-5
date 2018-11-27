@@ -35,7 +35,6 @@ function mario() {
 let a = height;
 
 var p = document.getElementById("mario-easy-output");
-p.innerHTML = '';
 let str = "<code>";
 
 a++;
@@ -61,9 +60,7 @@ while (a >= 2) {
   a--;
   y++;
   w--;
-  if (a > 1) {
-    str += "<br/>";
-  }
+  str += "<br/>";
 
 }
 
@@ -153,9 +150,7 @@ while (a >= 2) {
   a--;
   y++;
   w--;
-  if (a > 1) {
-    str += "<br/>";
-  }
+  str += "<br/>";
 
 }
 
@@ -219,7 +214,7 @@ while (card % 1 != 0 || card.length >= 17 || card.length < 13 || card.length == 
   card = prompt("Enter a Credit Card Number.");
 }
 
-let str = "<code>";
+let str = "";
 var p = document.getElementById("credit-output");
 p.innerHTML = '';
 let a = card;
@@ -227,7 +222,7 @@ let b = [];
 
 let i = 10;
 let q = 10;
-while (i < a*10) {
+while (i < a * 10) {
   let x = a % q;
   q = q / 10;
   x = x / q;
@@ -244,24 +239,66 @@ let c = b.filter((element, index) => {
   return index % 2 !== 0;
 })
 
-let e = 0;
-let f = 0;
+console.log(c);
+console.log(d);
+
+let e = [];
+let f = [];
 
 for (i = 0; i < c.length; i++) {
-  e += (c [i]) * 2;
+  e.push(c[i] * 2);
 }
 
 for (i = 0; i < d.length; i++) {
-  f += d[i];
+  f.push(d[i]);
 }
 
-let g = e + f;
+console.log(e);
+console.log(f);
+
+let h = [];
+
+i = 10;
+q = 0;
+
+while (q < e.length) {
+  x = e[q] % i;
+  i = i/10;
+  x = x/i;
+  if (x != 0) {
+    h.push(x);
+  }
+  if (e[q] > 9) {
+    i = 100
+    x = e[q] % i;
+    i = i/10;
+    x = Math.floor(x/i);
+    h.push(x);
+  }
+  q++;
+  i = 10;
+}
+
+// Random Variables I didn't Use
+let v = 0;
+let m = 0;
+q = 0;
+while (q < f.length) {
+  v += f[q] + v;
+  q++;
+}
+
+q = 0;
+while (q < h.length) {
+  m += h[q] + m;
+  q++;
+}
+
+let g = m + v;
 
 var id1 = b[b.length - 1];
 var id2 = b[b.length - 2];
 
-// 4511111111111 isn't this credit card number correct?
-// Images don't work?
 var imgv = new Image();
 var imgm = new Image();
 var imga = new Image();
@@ -286,7 +323,6 @@ if (g % 10 == 0) {
 }
 
 card = Number(card);
-str += "</code>";
 p.innerHTML = str;
 
   /*
@@ -405,7 +441,7 @@ function hurricane() {
 
 windspeed = 0;
 var p = document.getElementById("hurricane-output");
-str = "<code>";
+let str = "";
 
 while (windspeed < 0 || windspeed % 1 != 0 || windspeed == false) {
     windspeed = prompt("Please enter a Windspeed. Only Non-Negative Integers are Accepted.");
@@ -432,7 +468,6 @@ if (windspeed >= 157) {
 }
 
 windspeed = Number(windspeed);
-str += "</code>";
 p.innerHTML = str;
 
 
@@ -468,6 +503,7 @@ function gymnastics() {
 
   let countArray = [];
   let count;
+
   function countDecimals(input) {
     if (input % 1 != 0) {
       countArray = input.split(".");
@@ -476,12 +512,13 @@ function gymnastics() {
     } else {
       return 0;
     }
-  };
+  }
 
+  var p = document.getElementById("gymnastics-output");
   let score;
   let i = 1;
-  var p = document.getElementById("gymnastics-output");
-  str = "<code>";
+  let str = "";
+
   score = prompt("Please enter score number " + i + " out of 6. Only Real numbers between 0 and 10 rounded to the nearest tenth are accepted.");
 
 loop1:
@@ -534,7 +571,7 @@ loop5:
   } else {
     str += 'Discarded: ' + e + ", " + f + "<br/>" + "Score: " + total;
   }
-  str += "</code>";
+
   p.innerHTML = str;
 
   /*
@@ -607,7 +644,7 @@ function reportCard() {
   }
 
 var p = document.getElementById("report-card-output");
-str = "<code>"
+let str = "";
 let homeworkGrade;
 let quizGrade;
 let testGrade;
