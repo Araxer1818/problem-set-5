@@ -468,15 +468,15 @@ while (windspeed < 0 || windspeed % 1 != 0 || windspeed == false) {
 
 
 if (windspeed >= 157) {
-  str += "Catagory 5 Hurricane.";
+  str += "Category 5 Hurricane.";
 } else if (windspeed <= 156 && windspeed >= 130) {
-  str += "Catagory 4 Hurricane.";
+  str += "Category 4 Hurricane.";
 } else if (windspeed <= 129 && windspeed >= 111) {
-  str += "Catagory 3 Hurricane.";
+  str += "Category 3 Hurricane.";
 } else if (windspeed <= 110 && windspeed >= 96) {
-  str += "Catagory 2 Hurricane.";
+  str += "Category 2 Hurricane.";
 } else if (windspeed <= 95 && windspeed >= 74) {
-  str += "Catagory 1 Hurricane.";
+  str += "Category 1 Hurricane.";
 } else if (windspeed <= 73 && windspeed >= 39) {
   str += "Tropical Storm.";
 } else {
