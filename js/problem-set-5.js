@@ -433,7 +433,7 @@ if (guess > 1000 || guess < 1 || guess % 1 != 0) {
 
 // Prints Answer
 counter++;
-str += "Congratulations, you have guess the target number in " + counter + " chances. As guessed, the target number was " + target + ".";
+str += "Congratulations, you have guess the target number in " + counter + " guess(es). As guessed, the target number was " + target + ".";
 str += "</code>";
 
 p.innerHTML = str;
