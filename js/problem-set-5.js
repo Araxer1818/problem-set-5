@@ -33,7 +33,7 @@ function mario() {
   }
 
 let a = height;
-
+ 
 // Starts String
 var p = document.getElementById("mario-easy-output");
 let str = "<code>";
