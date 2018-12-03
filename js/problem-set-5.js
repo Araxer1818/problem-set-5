@@ -26,7 +26,7 @@ function mario() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-
+// Gets Height
   while (height > 23 || height < 1 || height % 1 != 0) {
     height = prompt("Please enter an integer from 1 to 23, else you'll be reprompted.");
     height = Number(height);
@@ -34,24 +34,29 @@ function mario() {
 
 let a = height;
 
+// Starts String
 var p = document.getElementById("mario-easy-output");
 let str = "<code>";
 
+// Sets Variables
 a++;
 let y = 2;
 let v = a;
 let z = v - 2;
 let w = v - 2;
 
+
 while (a >= 2) {
   let x = y;
   z = w;
 
+// Adds Height - 1 Amount of spaces and then height - 2 and etc.
   while (z >= 1) {
     str += '&nbsp;';
     z--;
   }
 
+// Adds 2 # then 3 # and etc. until y = input + 1
   while (x >= 1) {
     str += '#';
     x--;
@@ -64,6 +69,7 @@ while (a >= 2) {
 
 }
 
+// Prints Code
 str += "</code>";
 p.innerHTML = str;
 console.log(typeof height);
@@ -104,6 +110,7 @@ function marioAgain() {
   // WRITE YOUR EXERCISE 2 CODE HERE
   // \u00A0 = Centers effect
 
+// Gets Height
   while (height > 23 || height < 1 || height % 1 != 0) {
     height = prompt("Please enter an integer from 1 to 23, else you'll be reprompted.");
     // convert height to number
@@ -118,42 +125,48 @@ function marioAgain() {
   p.innerHTML = '';
   let str = "<code>";
 
+// Varibles
   a++;
   let y = 2;
   let v = a;
   let z = v - 2;
   let w = v - 2;
 
+// repeats until height = number of rows
 while (a >= 2) {
   let x = y;
   z = w;
 
+// Adds x amount of spaces and less and less for every new row
   while (z >= 1) {
     str += '&nbsp;';
     z--;
   }
 
+// Adds # as Necessary
   while (x >= 1) {
     str += '#';
     x--;
   }
 
+// Always add 2 spaces
   str += '&nbsp;&nbsp;';
 
+//Adds # as necessary
   x = y;
-
   while (x >= 1) {
     str += '#';
     x--;
 }
 
+//Change varibles
   a--;
   y++;
   w--;
   str += "<br/>";
 
 }
-
+//prints Code
   str += "</code>";
   p.innerHTML = str;
   console.log(typeof height);
@@ -210,6 +223,7 @@ function credit() {
   let card; // DO NOT MODIFY
   //////////// DO NOT MODIFY
 
+// Getting the Number
 while (card % 1 != 0 || card.length >= 17 || card.length < 13 || card.length == 14) {
   card = prompt("Enter a Credit Card Number.");
 }
@@ -220,6 +234,7 @@ p.innerHTML = '';
 let a = card;
 let b = [];
 
+//Organizing Each Digit in the Card into an Array
 let i = 10;
 let q = 10;
 while (i < a * 10) {
@@ -231,6 +246,7 @@ while (i < a * 10) {
   i = i * 10;
 }
 
+// Separating the array Starting with the second last number
 let d = b.filter((element, index) => {
   return index % 2 === 0;
 })
@@ -239,9 +255,7 @@ let c = b.filter((element, index) => {
   return index % 2 !== 0;
 })
 
-console.log(c);
-console.log(d);
-
+// Pushing everything into another array while muliplying one the the arrays by 2 as necessary
 let e = [];
 let f = [];
 
@@ -253,14 +267,12 @@ for (i = 0; i < d.length; i++) {
   f.push(d[i]);
 }
 
-console.log(e);
-console.log(f);
-
 let h = [];
 
 i = 10;
 q = 0;
 
+// Separating the Digits in the miltiplied Array
 while (q < e.length) {
   x = e[q] % i;
   i = i/10;
@@ -279,7 +291,7 @@ while (q < e.length) {
   i = 10;
 }
 
-// Random Variables I didn't Use
+// Random Variables I didn't Use also adding every digits
 let v = 0;
 let m = 0;
 q = 0;
@@ -296,9 +308,11 @@ while (q < h.length) {
 
 let g = m + v;
 
+// Checking the first 2 digits of the credit card
 var id1 = b[b.length - 1];
 var id2 = b[b.length - 2];
 
+// Images
 var imgv = document.createElement("img");
 var imgm = document.createElement("img");
 var imga = document.createElement("img");
@@ -308,6 +322,7 @@ imgm.src = "./images/mastercard.png";
 imga.src = "./images/amex.png";
 img.src = "./images/invalid.png";
 
+//Checking if Credit Card is Valid
 if (g % 10 == 0) {
   if (id1 == 4 && id1 % 1 == 0 && id2 % 1 == 0 && (a.length == 16 || a.length == 13)) {
     str += "Visa." + "<br/>";
@@ -327,9 +342,11 @@ if (g % 10 == 0) {
   k = 4;
 }
 
+// Displaying Text
 card = Number(card);
 p.innerHTML = str;
 
+//Displaying Images
 if (k == 1) {
   p.appendChild(imgv);
 } else if (k == 2) {
@@ -383,7 +400,9 @@ let str = "<code>";
 let a = 1;
 let b = 0;
 
+// gets the Guess
 let target = Math.floor(Math.random() * (1000 - 1) + 1);
+console.log(target);
 let guess = prompt("Try and guess the number from 1 to 1000. Only Integers are Accepted.");
 let counter = 0;
 if (guess > 1000 || guess < 1 || guess % 1 != 0) {
@@ -393,6 +412,7 @@ if (guess > 1000 || guess < 1 || guess % 1 != 0) {
     }
 }
 
+// Loops until Number is guessed
   while (guess != target) {
     if (guess > target && guess <= 1000 && guess >= 1 && guess % 1 == 0) {
       counter++;
@@ -411,6 +431,7 @@ if (guess > 1000 || guess < 1 || guess % 1 != 0) {
     }
   }
 
+// Prints Answer
 counter++;
 str += "Congratulations, you have guess the target number in " + counter + " chances. As guessed, the target number was " + target + ".";
 str += "</code>";
@@ -459,6 +480,7 @@ windspeed = 0;
 var p = document.getElementById("hurricane-output");
 let str = "";
 
+// Gets Input
 while (windspeed < 0 || windspeed % 1 != 0 || windspeed == false) {
     windspeed = prompt("Please enter a Windspeed. Only Non-Negative Integers are Accepted.");
     if (windspeed == true || windspeed === 0) {
@@ -466,7 +488,7 @@ while (windspeed < 0 || windspeed % 1 != 0 || windspeed == false) {
     }
 }
 
-
+// Calculates Category
 if (windspeed >= 157) {
   str += "Category 5 Hurricane.";
 } else if (windspeed <= 156 && windspeed >= 130) {
@@ -483,6 +505,7 @@ if (windspeed >= 157) {
   str += "The skies are calm...";
 }
 
+//Prints Answer
 windspeed = Number(windspeed);
 p.innerHTML = str;
 
@@ -520,6 +543,7 @@ function gymnastics() {
   let countArray = [];
   let count;
 
+//Function to Count the number of Decimals
   function countDecimals(input) {
     if (input % 1 != 0) {
       countArray = input.split(".");
@@ -535,15 +559,20 @@ function gymnastics() {
   let i = 1;
   let str = "";
 
+
   score = prompt("Please enter score number " + i + " out of 6. Only Real numbers between 0 and 10 rounded to the nearest tenth are accepted.");
 
 loop1:
+// Prompts until 6 guesses are inputed
   while (scores.length < 6) {
 loop2:
+// Checks if the answer is 0 or null/undefined
     if (score || score === '0') {
 loop3:
+// Check if number/score is within range
       if (score <= 10.0 && score >= 0.0) {
 loop4:
+// Checks if Decimal count is greater than 2 and goes back to ask for new input
         if (countDecimals(score) >= 2) {
           break loop3;
           }
@@ -551,25 +580,29 @@ loop4:
       scores.push(score);
       i++;
 loop5:
+//Breaks if 6 Guesses have already been Submitted
       if (i == 7) {
         break;
       }
     }
+// Reprompts as necessary
       score = prompt("Please enter score number " + i + " out of 6. Only Real numbers between 0 and 10 rounded to the nearest tenth are accepted.");
     } else {
       score = prompt("Please enter score number " + i + " out of 6. Again only Real numbers between 0 and 10 rounded to the nearest tenth are accepted.");
     }
   }
 
+// Varibles and Duplicates Array
   let c = 0;
   i = 0;
   let a = scores.slice(0);
 
+// Organizing Numbers Function
   function sortNumbers(a,b) {
         return a - b;
     }
 
-
+// Removes Highest and lowest and Adds the rest of the Numbers
   a.sort(sortNumbers);
   let e = a[0];
   let f = a[5];
@@ -581,6 +614,7 @@ loop5:
     i++;
   }
 
+// Averages and Prints Necessary
   total = (c / 4).toFixed(2);
   if (e > f) {
     str += 'Discarded: ' + f + ", " + e + "<br/>" + "Score: " + total;
@@ -649,6 +683,7 @@ function reportCard() {
   let homeworks = 0; // DO NOT MODIFY
   ///////////////////// DO NOT MODIFY
 
+//Count Decimal Function
   function countDecimals(input) {
     if (input % 1 != 0) {
       countArray = input.split(".");
@@ -658,7 +693,7 @@ function reportCard() {
       return 0;
     }
   }
-
+// Varibles
 var p = document.getElementById("report-card-output");
 let str = "";
 let homeworkGrade;
@@ -666,6 +701,7 @@ let quizGrade;
 let testGrade;
 
 Homework:
+//Caculates Homework Grades as necessary
 homeworkGrade = prompt("Enter as many homework grades as you like. Enter them one at a time or they'll not be computed. Only real numbered grades from 0 - 100 rounded to the nearest tenth will be accepted. Enter a -1 to proceed to Quiz grades.");
 
   while (homeworkGrade != -1) {
@@ -680,6 +716,7 @@ homeworkGrade = prompt("Enter as many homework grades as you like. Enter them on
   }
 
 Quiz:
+// Calculate Quizes as necessary
 quizGrade = prompt("Enter as many quiz grades as you like. Enter them one at a time or they'll not be computed. Only real numbered grades from 0 - 100 rounded to the nearest tenth will be accepted. Enter a -1 to proceed to Test grades.");
 
 while (quizGrade != -1) {
@@ -694,6 +731,7 @@ while (quizGrade != -1) {
 }
 
 Test:
+// Calculates Tests Grades as necessary
 testGrade = prompt("Enter as many test grades as you like. Enter them one at a time or they'll not be computed. Only real numbered grades from 0 - 100 rounded to the nearest tenth will be accepted. Enter a -1 to calculate total average grade.");
 
 while (testGrade != -1) {
@@ -707,6 +745,7 @@ while (testGrade != -1) {
   }
 }
 
+// Claculates all the grades as Necessary
 let testAvg = ((testTotal / tests)).toFixed(2);
 let testFinal = testAvg * 6;
 let quizAvg = ((quizTotal / quizzes)).toFixed(2);
@@ -716,6 +755,7 @@ let homeworkFinal = homeworkAvg * 1;
 let total = ((testFinal + quizFinal + homeworkFinal)).toFixed(2);
 let grade = (total / 10).toFixed(2);
 
+//Prints
 str += "Tests: " + testAvg + "<br/>" + "Quizzes: " + quizAvg + "<br/>" + "Homework: " + homeworkAvg + "<br/>" + "Grade: " + grade;
 p.innerHTML = str;
 
